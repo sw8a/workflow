@@ -46,6 +46,14 @@
             <span class="glyphicon glyphicon-ok " aria-hidden="true"></span>
           </button>
 
+          <!-- Priority dropdown menu (KC) -->
+          <select class="pull-right" ng-model="newPrio" ng-change="setPriority(do)">
+            <option selected disabled>Priority</option>
+            <option value="now">Now</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="someday">Someday</option>
+          </select>
+
         </li>
       </ul>
     </div>
