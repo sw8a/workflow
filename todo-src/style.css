@@ -2,3 +2,9 @@
 body {
   background: green;
 }
+.display-false {
+	display: none;
+}
+.btnMargin {
+	margin-left: 5px;
+}
