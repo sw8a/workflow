@@ -4,10 +4,12 @@ var myApp = angular.module('app', []);
 myApp.controller('MainCtrl', function($scope) {
     $scope.todos = [{
         text: "Learn Angular",
-        edit: false
+        edit: false,
+        done: false
     }, {
         text: "Learn node",
-        edit: false
+        edit: false,
+        done: false
     }];
     $scope.newItem = "";
 
@@ -42,6 +44,13 @@ myApp.controller('MainCtrl', function($scope) {
            $scope.todos[index].edit = false;
        }
    }
+
+   $scope.completeItem = function(item) {
+    item.done = !item.done;
+    console.log("done")
+    }
+
+
 });
 /*************************
  * Homework (not rly):

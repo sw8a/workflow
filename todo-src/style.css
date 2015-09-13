@@ -10,3 +10,8 @@ body {
 .btnMargin {
 	margin-left: 5px;
 }
+
+.done-true{
+	text-decoration: line-through;
+	color: red;
+}

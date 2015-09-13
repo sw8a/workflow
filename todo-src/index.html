@@ -31,15 +31,19 @@
         <li class="list-group-item clearfix" ng-repeat="do in todos">
 
           <input type="text" class="display-{{do.edit}}" placeholder="Edit this item" ng-model="do.text" ng-keydown="keyEnter($event,do)">
-          <span>{{do.text}}</span>
+          <span ng-class="{'done-true': do.done}">{{do.text}}</span>
 
           <!-- Delete button -->
           <button class="btn btn-danger pull-right btnMargin" type="button" ng-click="deleteItem(do)">
             <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
           </button>
           <!-- Edit button -->
-          <button class="btn btn-warning pull-right" type="button" ng-click="editItem(do)">
+          <button class="btn btn-warning pull-right btnMargin" type="button" ng-click="editItem(do)">
             <span class="glyphicon glyphicon-edit " aria-hidden="true"></span>
+          </button>
+
+          <button class="btn btn-success pull-right btnMargin" type="button" ng-click="completeItem(do)">
+            <span class="glyphicon glyphicon-ok " aria-hidden="true"></span>
           </button>
 
         </li>
