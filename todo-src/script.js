@@ -43,7 +43,6 @@ myApp.controller('MainCtrl', function($scope) {
        }
    }
 });
-
 /*************************
  * Homework (not rly):
  * - "enter" button functionality instead of clicking button
