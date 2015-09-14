@@ -15,9 +15,10 @@ myApp.controller('MainCtrl', function($scope) {
     }];
     $scope.newItem = "";
     $scope.newPrio = "";    // Stored selected priority for todo item (KC)
-    $scope.totalNumber = 2;  // Used to store the number of items
+    $scope.totalNumber = 2;  // Used to store the number of items (GG)
    
    
+
     $scope.addItem = function() {
         console.log("in add");
         if ($scope.newItem !== "") {
