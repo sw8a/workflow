@@ -14,7 +14,13 @@ myApp.controller('MainCtrl', function($scope) {
         done: false
     }];
     $scope.newItem = "";
+    $scope.newPrio = "";    // Stored selected priority for todo item (KC)
+    $scope.totalNumber = 2;  // Used to store the number of items (GG)
+   
+   
+
     $scope.newPriority = ""; // Stored selected priority for todo item (KC)
+
 
     $scope.addItem = function() {
         if ($scope.newItem !== "") {
@@ -24,6 +30,7 @@ myApp.controller('MainCtrl', function($scope) {
                 priority: "now"
             });
             $scope.newItem = "";
+            $scope.totalNumber += 1;
         }
     }
 
@@ -42,7 +49,24 @@ myApp.controller('MainCtrl', function($scope) {
     $scope.deleteItem = function(item) {
         var index = $scope.todos.indexOf(item);
         $scope.todos.splice(index, 1);
+        $scope.totalNumber -= 1;
     }
+
+// function to delete all items. Stores current todos in a temp list, clears $scope.todos, and then repopulates it with uncompleted tasks
+    $scope.deleteCompletedItems = function ()
+    {
+     var oldTodos = $scope.todos; 
+     $scope.todos = [];
+     angular.forEach(oldTodos,function(item)
+     {
+      if(!item.done)
+      {
+        $scope.todos.push(item);
+      } else {
+        $scope.totalNumber -= 1;
+      }
+     });
+
 
     // function to delete all items. Stores current todos in a temp list, clears $scope.todos, and then repopulates it with uncompleted tasks
     $scope.deleteCompletedItems = function() {
@@ -89,3 +113,17 @@ myApp.controller('MainCtrl', function($scope) {
     }
 
 });
+
+/*************************
+ * Homework (not rly):
+ * - "enter" button functionality instead of clicking button
+ * - edit button functionality
+ * - button to mark item as "complete"
+ * - have a total number of items at the top
+ * - make it prettier
+ * - add a due date
+ * - add reminder (setInterval)
+ *
+ * *********************/
+
+
