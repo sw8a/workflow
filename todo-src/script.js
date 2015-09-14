@@ -1,26 +1,29 @@
 // Code goes here
-
 var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function($scope) {
     $scope.todos = [{
         text: "Learn Angular",
+        prio: "now",
         edit: false,
         done: false
     }, {
         text: "Learn node",
+        prio: "now",
         edit: false,
         done: false
     }];
     $scope.newItem = "";
-    $scope.totalNumber = 2;
-
+    $scope.newPrio = "";    // Stored selected priority for todo item (KC)
+    $scope.totalNumber = 2;  // Used to store the number of items
+   
+   
     $scope.addItem = function() {
         console.log("in add");
         if ($scope.newItem !== "") {
-            $scope.todos.push({text:$scope.newItem, edit:false});
+            $scope.todos.push({text:$scope.newItem, edit:false, prio:"now"});
             $scope.newItem = "";
-             $scope.totalNumber += 1;
+            $scope.totalNumber += 1;
         }
     }
 
@@ -41,7 +44,6 @@ myApp.controller('MainCtrl', function($scope) {
       if(!item.done)
       {
         $scope.todos.push(item);
-        
       } else {
         $scope.totalNumber -= 1;
       }
@@ -69,9 +71,13 @@ myApp.controller('MainCtrl', function($scope) {
     item.done = !item.done;
     console.log("done")
     }
-    
 
-
+    // Added by: KC
+    // Reset priority to item when user make changes
+    $scope.setPriority = function(item) {
+        var index = $scope.todos.indexOf(item);
+        $scope.todos[index].prio = $scope.newPrio;
+    }
 
 });
 /*************************
@@ -85,3 +91,4 @@ myApp.controller('MainCtrl', function($scope) {
  * - add reminder (setInterval)
  *
  * *********************/
+
