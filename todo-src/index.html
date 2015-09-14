@@ -17,7 +17,7 @@
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Item to add to todo list" ng-model="newItem">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="button" ng-click="addItem()">
+            <button class="btn btn-default" type="button" ng-click="addItem()" ng-keypress="enterAddItem($event)">
               Add
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </button>
@@ -28,7 +28,7 @@
       <!-- this is the button that will delete all items-->
       <button class="btn btn-danger" type="button" ng-click="deleteCompletedItems()"> Delete Completed Items
         <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
-      </button> 
+      </button>
       </h2>
 
       <ul class="list-group">
