@@ -1,4 +1,5 @@
 // Code goes here
+
 var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function($scope) {
@@ -12,12 +13,14 @@ myApp.controller('MainCtrl', function($scope) {
         done: false
     }];
     $scope.newItem = "";
+    $scope.totalNumber = 2;
 
     $scope.addItem = function() {
         console.log("in add");
         if ($scope.newItem !== "") {
             $scope.todos.push({text:$scope.newItem, edit:false});
             $scope.newItem = "";
+             $scope.totalNumber += 1;
         }
     }
 
@@ -26,6 +29,7 @@ myApp.controller('MainCtrl', function($scope) {
         console.log("in delete");
         var index = $scope.todos.indexOf(item);
         $scope.todos.splice(index, 1);
+        $scope.totalNumber -= 1;
     }
 // function to delete all items. Stores current todos in a temp list, clears $scope.todos, and then repopulates it with uncompleted tasks
     $scope.deleteCompletedItems = function ()
@@ -37,6 +41,9 @@ myApp.controller('MainCtrl', function($scope) {
       if(!item.done)
       {
         $scope.todos.push(item);
+        
+      } else {
+        $scope.totalNumber -= 1;
       }
      });
     }
@@ -63,13 +70,7 @@ myApp.controller('MainCtrl', function($scope) {
     console.log("done")
     }
     
-    $scope.remaining = function() {
-        var count = 0;
-        angular.forEach($scope.todoList.todos, function(todo) {
-            count += todo.done ? 0 : 1;
-        });
-        return count;
-    };
+
 
 
 });
