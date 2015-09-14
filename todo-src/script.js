@@ -14,14 +14,13 @@ myApp.controller('MainCtrl', function($scope) {
         done: false
     }];
     $scope.newItem = "";
-<<<<<<< HEAD
     $scope.newPrio = "";    // Stored selected priority for todo item (KC)
     $scope.totalNumber = 2;  // Used to store the number of items (GG)
    
    
-=======
+
     $scope.newPriority = ""; // Stored selected priority for todo item (KC)
->>>>>>> master
+
 
     $scope.addItem = function() {
         if ($scope.newItem !== "") {
@@ -52,7 +51,7 @@ myApp.controller('MainCtrl', function($scope) {
         $scope.todos.splice(index, 1);
         $scope.totalNumber -= 1;
     }
-<<<<<<< HEAD
+
 // function to delete all items. Stores current todos in a temp list, clears $scope.todos, and then repopulates it with uncompleted tasks
     $scope.deleteCompletedItems = function ()
     {
@@ -67,7 +66,7 @@ myApp.controller('MainCtrl', function($scope) {
         $scope.totalNumber -= 1;
       }
      });
-=======
+
 
     // function to delete all items. Stores current todos in a temp list, clears $scope.todos, and then repopulates it with uncompleted tasks
     $scope.deleteCompletedItems = function() {
@@ -78,7 +77,6 @@ myApp.controller('MainCtrl', function($scope) {
                 $scope.todos.push(item);
             }
         });
->>>>>>> master
     }
 
     /*
