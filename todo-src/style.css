@@ -1,8 +1,7 @@
 /* Styles go here */
 body {
-
-  background-color: #CCE0ED; /* Task 1 */
-
+  /* Task 1 */
+  background-color: #CCE0ED; 
 }
 .display-false {
 	display: none;
@@ -10,7 +9,6 @@ body {
 .btnMargin {
 	margin-left: 5px;
 }
-
 .done-true{
 	text-decoration: line-through;
 	color: red;

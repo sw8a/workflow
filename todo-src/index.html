@@ -10,29 +10,29 @@
   </head>
 
   <body ng-app="app">
-    <h1 class="text-center">My little to do app!</h1>
+    <h1 class="text-center">To do app!</h1>
 
     <div id="todo" class="col-xs-6 col-xs-offset-3" ng-controller="MainCtrl">
 
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Item to add to todo list" ng-model="newItem">
+          <input type="text" class="form-control" placeholder="Item to add to todo list" ng-model="newItem" ng-keypress="enterAddItem($event)">
           <span class="input-group-btn">
             <button class="btn btn-default" type="button" ng-click="addItem()">
               Add
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </button>
           </span>
-        </div><!-- /input-group -->
+        </div>
+        <!-- /input-group -->
 
-      <h2>stuff i gotta do asap
-      <!-- this is the button that will delete all items-->
-      <button class="btn btn-danger" type="button" ng-click="deleteCompletedItems()"> Delete Completed Items
-        <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
-      </button> 
+      <h2>Stuff I gotta do
+        <!-- This is the button that will delete all items-->
+        <button class="btn btn-danger" type="button" ng-click="deleteCompletedItems()"> Delete Completed Items
+          <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
+        </button>
       </h2>
 
       <ul class="list-group">
-        <!-- http://www.w3schools.com/css/css_float.asp -->
         <li class="list-group-item clearfix" ng-repeat="do in todos">
 
           <input type="text" class="display-{{do.edit}}" placeholder="Edit this item" ng-model="do.text" ng-keydown="keyEnter($event,do)">
@@ -46,13 +46,12 @@
           <button class="btn btn-warning pull-right btnMargin" type="button" ng-click="editItem(do)">
             <span class="glyphicon glyphicon-edit " aria-hidden="true"></span>
           </button>
-
+          <!-- Complete item button -->
           <button class="btn btn-success pull-right btnMargin" type="button" ng-click="completeItem(do)">
             <span class="glyphicon glyphicon-ok " aria-hidden="true"></span>
           </button>
-
           <!-- Priority dropdown menu (KC) -->
-          <select class="pull-right" ng-model="newPrio" ng-change="setPriority(do)">
+          <select class="pull-right" ng-model="newPriority" ng-change="setPriority(do)">
             <option value="" selected disabled>Priority</option>
             <option value="now">Now</option>
             <option value="tomorrow">Tomorrow</option>
