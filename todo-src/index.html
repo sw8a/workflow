@@ -26,7 +26,6 @@
         
         <!-- /Displays the total number of taks -->
         <h4>Tasks Remaining:  {{totalNumber}}</h4>
-      
 
       <h2>stuff i gotta do asap
       <!-- this is the button that will delete all items-->
@@ -34,7 +33,6 @@
         <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
       </button> 
       </h2>
-
 
       <ul class="list-group">
         <!-- http://www.w3schools.com/css/css_float.asp -->
@@ -56,6 +54,14 @@
             <span class="glyphicon glyphicon-ok " aria-hidden="true"></span>
           </button>
 
+          <!-- Priority dropdown menu (KC) -->
+          <select class="pull-right" ng-model="newPrio" ng-change="setPriority(do)">
+            <option value="" selected disabled>Priority</option>
+            <option value="now">Now</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="someday">Someday</option>
+          </select>
+
         </li>
       </ul>
     </div>
@@ -63,3 +69,5 @@
   </body>
 
 </html>
+
+
