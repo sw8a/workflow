@@ -4,24 +4,24 @@ var myApp = angular.module('app', []);
 myApp.controller('MainCtrl', function($scope) {
     $scope.todos = [{
         text: "Learn Angular",
-        prio: "now",
+        priority: "now",
         edit: false,
         done: false
     }, {
         text: "Learn node",
-        prio: "now",
+        priority: "now",
         edit: false,
         done: false
     }];
     $scope.newItem = "";
-    $scope.newPrio = ""; // Stored selected priority for todo item (KC)
+    $scope.newPriority = ""; // Stored selected priority for todo item (KC)
 
     $scope.addItem = function() {
         if ($scope.newItem !== "") {
             $scope.todos.push({
                 text: $scope.newItem,
                 edit: false,
-                prio: "now"
+                priority: "now"
             });
             $scope.newItem = "";
         }
@@ -33,6 +33,7 @@ myApp.controller('MainCtrl', function($scope) {
     */
     $scope.enterAddItem = function($event){
       var keyCode = $event.which || $event.keyCode;
+
       if (keyCode === 13) {
           $scope.addItem();
       }
@@ -56,16 +57,11 @@ myApp.controller('MainCtrl', function($scope) {
 
     /*
         Added by: Gonzalo
-        Task #3: Add edit button functionality.
+        Task #3: Add edit button functionality - show/hide input box when user clicks edit button.
     */
     $scope.editItem = function(item) {
         var index = $scope.todos.indexOf(item);
-
-        if ($scope.todos[index].edit === true) {
-            $scope.todos[index].edit = false;
-        } else {
-            $scope.todos[index].edit = true;
-        }
+        $scope.todos[index].edit = !$scope.todos[index].edit;
     }
 
     /*
@@ -74,8 +70,9 @@ myApp.controller('MainCtrl', function($scope) {
     */
     $scope.keyEnter = function($event, item) {
         var index = $scope.todos.indexOf(item);
+        var keyCode = $event.which || $event.keyCode;
 
-        if ($event.keyCode == 13) {
+        if (keyCode === 13) {
             $scope.todos[index].edit = false;
         }
     }
@@ -88,18 +85,7 @@ myApp.controller('MainCtrl', function($scope) {
     // Reset priority to item when user make changes
     $scope.setPriority = function(item) {
         var index = $scope.todos.indexOf(item);
-        $scope.todos[index].prio = $scope.newPrio;
+        $scope.todos[index].priority = $scope.newPriority;
     }
 
 });
-/*************************
- * Homework (not rly):
- * - "enter" button functionality instead of clicking button
- * - edit button functionality
- * - button to mark item as "complete"
- * - have a total number of items at the top
- * - make it prettier
- * - add a due date
- * - add reminder (setInterval)
- *
- * *********************/
