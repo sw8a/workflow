@@ -36,7 +36,7 @@
       </h2>
 
       <ul class="list-group">
-        <li class="list-group-item clearfix" ng-repeat="dos in todos">
+        <li class="list-group-item clearfix" ng-repeat="dos in todos | orderBy:sortByPriority">
 
           <input type="text" class="display-{{dos.edit}}" placeholder="Edit this item" ng-model="dos.text" ng-keydown="keyEnter($event,dos)">
           <span ng-class="{'done-true': dos.done}">{{dos.text}}</span>
