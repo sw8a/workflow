@@ -24,8 +24,8 @@
           </span>
         </div>
         <!-- /input-group -->
-        
-        <!-- /Displays the total number of taks -->
+
+        <!-- Displays the total number of tasks -->
         <h4>Items in Todo List:  {{totalNumber}}</h4>
 
       <h2>Stuff I gotta do
@@ -36,29 +36,28 @@
       </h2>
 
       <ul class="list-group">
-        <li class="list-group-item clearfix" ng-repeat="do in todos">
+        <li class="list-group-item clearfix" ng-repeat="dos in todos | orderBy:sortByPriority">
 
-          <input type="text" class="display-{{do.edit}}" placeholder="Edit this item" ng-model="do.text" ng-keydown="keyEnter($event,do)">
-          <span ng-class="{'done-true': do.done}">{{do.text}}</span>
+          <input type="text" class="display-{{dos.edit}}" placeholder="Edit this item" ng-model="dos.text" ng-keydown="keyEnter($event,dos)">
+          <span ng-class="{'done-true': dos.done}">{{dos.text}}</span>
 
           <!-- Delete button -->
-          <button class="btn btn-danger pull-right btnMargin" type="button" ng-click="deleteItem(do)">
+          <button class="btn btn-danger pull-right btnMargin" type="button" ng-click="deleteItem(dos)">
             <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
           </button>
           <!-- Edit button -->
-          <button class="btn btn-warning pull-right btnMargin" type="button" ng-click="editItem(do)">
+          <button class="btn btn-warning pull-right btnMargin" type="button" ng-click="editItem(dos)">
             <span class="glyphicon glyphicon-edit " aria-hidden="true"></span>
           </button>
           <!-- Complete item button -->
-          <button class="btn btn-success pull-right btnMargin" type="button" ng-click="completeItem(do)">
+          <button class="btn btn-success pull-right btnMargin" type="button" ng-click="completeItem(dos)">
             <span class="glyphicon glyphicon-ok " aria-hidden="true"></span>
           </button>
-          <!-- Priority dropdown menu (KC) -->
-          <select class="pull-right" ng-model="newPriority" ng-change="setPriority(do)">
-            <option value="" selected disabled>Priority</option>
-            <option value="now">Now</option>
-            <option value="tomorrow">Tomorrow</option>
-            <option value="someday">Someday</option>
+          <!-- Priority dropdown menu (KC) Fix by: GZ -->
+          <select class="pull-right" ng-model="dos.priority">
+            <option value="Now">Priority: Now</option>
+            <option value="Tomorrow">Priority: Tomorrow</option>
+            <option value="Someday">Priority: Someday</option>
           </select>
 
         </li>
