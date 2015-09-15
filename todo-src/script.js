@@ -4,17 +4,16 @@ var myApp = angular.module('app', []);
 myApp.controller('MainCtrl', function($scope) {
     $scope.todos = [{
         text: "Learn Angular",
-        priority: "now",
+        priority: "Now",
         edit: false,
         done: false
     }, {
         text: "Learn node",
-        priority: "now",
+        priority: "Now",
         edit: false,
         done: false
     }];
     $scope.newItem = "";
-    $scope.newPriority = ""; // Stored selected priority for todo item (KC)
     $scope.totalNumber = 2;  // Used to store the number of items (GG)
 
     $scope.addItem = function() {
@@ -22,7 +21,7 @@ myApp.controller('MainCtrl', function($scope) {
             $scope.todos.push({
                 text: $scope.newItem,
                 edit: false,
-                priority: "now"
+                priority: "Now"
             });
             $scope.newItem = "";
             $scope.totalNumber += 1;
@@ -86,11 +85,19 @@ myApp.controller('MainCtrl', function($scope) {
         item.done = !item.done;
     }
 
-    // Added by: KC
-    // Reset priority to item when user make changes
-    $scope.setPriority = function(item) {
-        var index = $scope.todos.indexOf(item);
-        $scope.todos[index].priority = $scope.newPriority;
+    /*
+      Used to sort the todos by priority. Todos with a "Now" priority will go first, then the todos with a
+      "Tomorrow" priority, then the todos with a "Someday" priority.
+    */
+    $scope.sortByPriority = function(dos) {
+      if(dos.priority === "Now"){
+        return 0;
+      }
+      else if(dos.priority === "Tomorrow"){
+        return 1;
+      }
+      else {
+        return 2;
+      }
     }
-
 });

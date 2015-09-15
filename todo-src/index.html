@@ -24,8 +24,8 @@
           </span>
         </div>
         <!-- /input-group -->
-        
-        <!-- /Displays the total number of taks -->
+
+        <!-- Displays the total number of tasks -->
         <h4>Items in Todo List:  {{totalNumber}}</h4>
 
       <h2>Stuff I gotta do
@@ -53,12 +53,11 @@
           <button class="btn btn-success pull-right btnMargin" type="button" ng-click="completeItem(do)">
             <span class="glyphicon glyphicon-ok " aria-hidden="true"></span>
           </button>
-          <!-- Priority dropdown menu (KC) -->
-          <select class="pull-right" ng-model="newPriority" ng-change="setPriority(do)">
-            <option value="" selected disabled>Priority</option>
-            <option value="now">Now</option>
-            <option value="tomorrow">Tomorrow</option>
-            <option value="someday">Someday</option>
+          <!-- Priority dropdown menu (KC) Fix by: GZ -->
+          <select class="pull-right" ng-model="dos.priority">
+            <option value="Now">Priority: Now</option>
+            <option value="Tomorrow">Priority: Tomorrow</option>
+            <option value="Someday">Priority: Someday</option>
           </select>
 
         </li>
